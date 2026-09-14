@@ -1,0 +1,2385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#071426">
+
+  <title>EGiveaways — Pick. Spin. Win.</title>
+
+  <meta
+    name="description"
+    content="EGiveaways — A simple random giveaway and prize picker."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- App Shell -->
+  <div class="app">
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+    <aside class="sidebar" id="sidebar">
+
+      <div class="brand">
+
+        <div class="brand-icon">
+          🎁
+        </div>
+
+        <div>
+          <h1>EGiveaways</h1>
+          <span>Pick. Spin. Win.</span>
+        </div>
+
+      </div>
+
+
+      <nav class="nav">
+
+        <button
+          class="nav-item active"
+          data-page="home"
+        >
+          <span class="nav-icon">⌂</span>
+          <span>Home</span>
+        </button>
+
+
+        <!-- NEW: ENTRIES -->
+        <button
+          class="nav-item"
+          data-page="entries"
+        >
+          <span class="nav-icon">🎟️</span>
+          <span>Entries</span>
+        </button>
+
+
+        <button
+          class="nav-item"
+          data-page="participants"
+        >
+          <span class="nav-icon">👥</span>
+          <span>Participants</span>
+        </button>
+
+
+        <button
+          class="nav-item"
+          data-page="rewards"
+        >
+          <span class="nav-icon">🎁</span>
+          <span>Rewards</span>
+        </button>
+
+
+        <button
+          class="nav-item"
+          data-page="mode"
+        >
+          <span class="nav-icon">🎯</span>
+          <span>Giveaway Mode</span>
+        </button>
+
+
+        <button
+          class="nav-item"
+          data-page="draw"
+        >
+          <span class="nav-icon">🎰</span>
+          <span>Draw</span>
+        </button>
+
+
+        <button
+          class="nav-item"
+          data-page="results"
+        >
+          <span class="nav-icon">🏆</span>
+          <span>Results</span>
+        </button>
+
+
+        <button
+          class="nav-item"
+          data-page="history"
+        >
+          <span class="nav-icon">🕘</span>
+          <span>History</span>
+        </button>
+
+
+        <button
+          class="nav-item"
+          data-page="settings"
+        >
+          <span class="nav-icon">⚙️</span>
+          <span>Settings</span>
+        </button>
+
+      </nav>
+
+
+      <div class="sidebar-footer">
+
+        <div class="mini-stat">
+          <span>Participants</span>
+          <strong id="sidebarParticipantCount">0</strong>
+        </div>
+
+        <div class="mini-stat">
+          <span>Rewards</span>
+          <strong id="sidebarRewardCount">0</strong>
+        </div>
+
+      </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MOBILE HEADER
+    ========================== -->
+    <header class="mobile-header">
+
+      <button
+        class="icon-button"
+        id="menuButton"
+        aria-label="Open menu"
+      >
+        ☰
+      </button>
+
+
+      <div class="mobile-brand">
+
+        <span>🎁</span>
+
+        <strong>
+          EGiveaways
+        </strong>
+
+      </div>
+
+
+      <button
+        class="icon-button"
+        id="mobileSettingsButton"
+        aria-label="Settings"
+      >
+        ⚙️
+      </button>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+    <main class="main-content">
+
+
+      <!-- =====================
+           HOME
+      ====================== -->
+      <section
+        class="page active"
+        id="page-home"
+      >
+
+        <div class="page-header">
+
+          <div>
+
+            <span class="eyebrow">
+              GIVEAWAY CREATOR
+            </span>
+
+            <h2>
+              Pick. Spin. Win.
+            </h2>
+
+            <p>
+              Create a giveaway, add your participants and let EGiveaways
+              randomly pick the winners.
+            </p>
+
+          </div>
+
+
+          <button
+            class="primary-button"
+            id="startGiveawayButton"
+          >
+            🎉 Start Giveaway
+          </button>
+
+        </div>
+
+
+        <!-- Stats -->
+        <div class="stats-grid">
+
+          <div class="stat-card">
+
+            <div class="stat-icon blue">
+              👥
+            </div>
+
+            <div>
+              <span>Participants</span>
+              <strong id="homeParticipantCount">
+                0
+              </strong>
+            </div>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <div class="stat-icon cyan">
+              🎁
+            </div>
+
+            <div>
+              <span>Reward Slots</span>
+
+              <strong id="homeRewardCount">
+                0
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <div class="stat-icon purple">
+              🏆
+            </div>
+
+            <div>
+
+              <span>Winners</span>
+
+              <strong id="homeWinnerCount">
+                0
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <div class="stat-icon green">
+              🕘
+            </div>
+
+            <div>
+
+              <span>Giveaways</span>
+
+              <strong id="homeHistoryCount">
+                0
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Quick Start -->
+        <div class="section-card">
+
+          <div class="section-heading">
+
+            <div>
+
+              <h3>
+                Quick Start
+              </h3>
+
+              <p>
+                Set up your giveaway in three simple steps.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="steps-grid">
+
+            <button
+              class="step-card"
+              data-page="participants"
+            >
+
+              <div class="step-number">
+                01
+              </div>
+
+              <div class="step-icon">
+                👥
+              </div>
+
+              <h4>
+                Add Participants
+              </h4>
+
+              <p>
+                Paste names from your WhatsApp Status viewers or any other
+                source.
+              </p>
+
+              <span class="step-action">
+                Add names →
+              </span>
+
+            </button>
+
+
+            <button
+              class="step-card"
+              data-page="rewards"
+            >
+
+              <div class="step-number">
+                02
+              </div>
+
+              <div class="step-icon">
+                🎁
+              </div>
+
+              <h4>
+                Add Rewards
+              </h4>
+
+              <p>
+                Create custom rewards and choose how many people can receive
+                each one.
+              </p>
+
+              <span class="step-action">
+                Add rewards →
+              </span>
+
+            </button>
+
+
+            <button
+              class="step-card"
+              data-page="mode"
+            >
+
+              <div class="step-number">
+                03
+              </div>
+
+              <div class="step-icon">
+                🎯
+              </div>
+
+              <h4>
+                Choose Mode
+              </h4>
+
+              <p>
+                Select how EGiveaways should choose and distribute your
+                winners.
+              </p>
+
+              <span class="step-action">
+                Choose mode →
+              </span>
+
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- Current Giveaway -->
+        <div class="section-card">
+
+          <div class="section-heading">
+
+            <div>
+
+              <h3>
+                Current Giveaway
+              </h3>
+
+              <p>
+                Your current setup is saved automatically.
+              </p>
+
+            </div>
+
+
+            <button
+              class="ghost-button"
+              id="resetGiveawayButton"
+            >
+              Reset
+            </button>
+
+          </div>
+
+
+          <div class="current-giveaway">
+
+            <div class="giveaway-info">
+
+              <span class="label">
+                Giveaway Name
+              </span>
+
+
+              <div class="name-editor">
+
+                <input
+                  type="text"
+                  id="giveawayName"
+                  placeholder="My Awesome Giveaway"
+                  maxlength="80"
+                >
+
+
+                <button
+                  class="icon-button small"
+                  id="saveGiveawayName"
+                  aria-label="Save giveaway name"
+                >
+                  ✓
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <div class="setup-progress">
+
+              <div class="progress-header">
+
+                <span>
+                  Setup Progress
+                </span>
+
+                <strong id="setupProgressText">
+                  0%
+                </strong>
+
+              </div>
+
+
+              <div class="progress-track">
+
+                <div
+                  class="progress-bar"
+                  id="setupProgressBar"
+                  style="width: 0%"
+                ></div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           NEW: ENTRY FORMS
+      ====================================================== -->
+      <section
+        class="page"
+        id="page-entries"
+      >
+
+        <div class="page-header">
+
+          <div>
+
+            <span class="eyebrow">
+              PUBLIC ENTRIES
+            </span>
+
+            <h2>
+              Entries
+            </h2>
+
+            <p>
+              Create a public entry form and collect names or numbers
+              automatically.
+            </p>
+
+          </div>
+
+
+          <button
+            class="primary-button"
+            id="createEntryFormButton"
+          >
+            + Create Entry Form
+          </button>
+
+        </div>
+
+
+        <!-- Entry Overview -->
+        <div class="stats-grid">
+
+          <div class="stat-card">
+
+            <div class="stat-icon blue">
+              🎟️
+            </div>
+
+            <div>
+
+              <span>
+                Entry Forms
+              </span>
+
+              <strong id="entryFormCount">
+                0
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <div class="stat-icon cyan">
+              👥
+            </div>
+
+            <div>
+
+              <span>
+                Total Entries
+              </span>
+
+              <strong id="totalEntryCount">
+                0
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <div class="stat-icon green">
+              🟢
+            </div>
+
+            <div>
+
+              <span>
+                Open Forms
+              </span>
+
+              <strong id="openEntryFormCount">
+                0
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <div class="stat-icon purple">
+              🔗
+            </div>
+
+            <div>
+
+              <span>
+                Public Links
+              </span>
+
+              <strong id="publicLinkCount">
+                0
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Entry Forms -->
+        <div class="section-card">
+
+          <div class="section-heading">
+
+            <div>
+
+              <h3>
+                Your Entry Forms
+              </h3>
+
+              <p>
+                Share a public link and let people submit their entries.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div
+            class="entry-forms-list"
+            id="entryFormsList"
+          ></div>
+
+
+          <!-- Empty state -->
+          <div
+            class="empty-state large"
+            id="entryFormsEmptyState"
+          >
+
+            <div class="empty-icon">
+              🎟️
+            </div>
+
+            <h4>
+              No entry forms yet
+            </h4>
+
+            <p>
+              Create a public entry form to start collecting names or
+              numbers.
+            </p>
+
+
+            <button
+              class="primary-button"
+              id="emptyCreateEntryForm"
+            >
+              + Create Your First Entry Form
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================
+           PARTICIPANTS
+      ====================== -->
+      <section
+        class="page"
+        id="page-participants"
+      >
+
+        <div class="page-header">
+
+          <div>
+
+            <span class="eyebrow">
+              STEP 01
+            </span>
+
+            <h2>
+              Participants
+            </h2>
+
+            <p>
+              Add the people who will participate in your giveaway.
+            </p>
+
+          </div>
+
+
+          <div class="header-actions">
+
+            <button
+              class="secondary-button"
+              id="shuffleParticipants"
+            >
+              🔀 Shuffle
+            </button>
+
+
+            <button
+              class="danger-button"
+              id="clearParticipants"
+            >
+              Clear All
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="two-column-layout">
+
+          <!-- Add Participants -->
+          <div class="section-card">
+
+            <div class="section-heading">
+
+              <div>
+
+                <h3>
+                  Add Participants
+                </h3>
+
+                <p>
+                  Paste one name per line.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <textarea
+              id="participantInput"
+              class="large-textarea"
+              placeholder="Akosua
+Kwame
+Yaw
+Ama
+Kofi"
+              rows="10"
+            ></textarea>
+
+
+            <div class="input-footer">
+
+              <span id="participantInputCount">
+                0 names detected
+              </span>
+
+
+              <button
+                class="primary-button"
+                id="addParticipants"
+              >
+                + Add Participants
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- Participant List -->
+          <div class="section-card">
+
+            <div class="section-heading">
+
+              <div>
+
+                <h3>
+                  Your Participants
+                </h3>
+
+                <p>
+                  <span id="participantListCount">
+                    0
+                  </span>
+                  participants
+                </p>
+
+              </div>
+
+
+              <div class="search-box">
+
+                <span>
+                  ⌕
+                </span>
+
+                <input
+                  type="search"
+                  id="participantSearch"
+                  placeholder="Search..."
+                >
+
+              </div>
+
+            </div>
+
+
+            <div
+              class="participant-list"
+              id="participantList"
+            ></div>
+
+
+            <div
+              class="empty-state"
+              id="participantEmptyState"
+            >
+
+              <div class="empty-icon">
+                👥
+              </div>
+
+              <h4>
+                No participants yet
+              </h4>
+
+              <p>
+                Add names above to get started.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================
+           REWARDS
+      ====================== -->
+      <section
+        class="page"
+        id="page-rewards"
+      >
+
+        <div class="page-header">
+
+          <div>
+
+            <span class="eyebrow">
+              STEP 02
+            </span>
+
+            <h2>
+              Rewards
+            </h2>
+
+            <p>
+              Create the prizes you want to give away.
+            </p>
+
+          </div>
+
+
+          <button
+            class="primary-button"
+            id="addRewardButton"
+          >
+            + Add Reward
+          </button>
+
+        </div>
+
+
+        <div class="reward-summary">
+
+          <div>
+
+            <span>
+              Total Reward Types
+            </span>
+
+            <strong id="rewardTypeCount">
+              0
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Total Reward Slots
+            </span>
+
+            <strong id="rewardSlotCount">
+              0
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Distributed
+            </span>
+
+            <strong id="distributedRewardCount">
+              0
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div
+          class="rewards-grid"
+          id="rewardsGrid"
+        ></div>
+
+
+        <div
+          class="empty-state large"
+          id="rewardEmptyState"
+        >
+
+          <div class="empty-icon">
+            🎁
+          </div>
+
+          <h4>
+            No rewards yet
+          </h4>
+
+          <p>
+            Add rewards such as data, airtime, cash, gifts or anything
+            you want.
+          </p>
+
+
+          <button
+            class="primary-button"
+            id="emptyAddReward"
+          >
+            + Add Your First Reward
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================
+           MODE
+      ====================== -->
+      <section
+        class="page"
+        id="page-mode"
+      >
+
+        <div class="page-header">
+
+          <div>
+
+            <span class="eyebrow">
+              STEP 03
+            </span>
+
+            <h2>
+              Giveaway Mode
+            </h2>
+
+            <p>
+              Choose how winners and rewards should be selected.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="mode-grid">
+
+          <button
+            class="mode-card selected"
+            data-mode="random-winner"
+          >
+
+            <div class="mode-card-icon">
+              🎯
+            </div>
+
+
+            <div class="mode-card-content">
+
+              <h3>
+                Random Winner
+              </h3>
+
+              <p>
+                Randomly select one or more winners from your participant
+                list.
+              </p>
+
+              <span class="mode-badge">
+                Most Popular
+              </span>
+
+            </div>
+
+
+            <div class="radio-circle"></div>
+
+          </button>
+
+
+          <button
+            class="mode-card"
+            data-mode="random-prizes"
+          >
+
+            <div class="mode-card-icon">
+              🎁
+            </div>
+
+
+            <div class="mode-card-content">
+
+              <h3>
+                Random Prizes
+              </h3>
+
+              <p>
+                Randomly assign your available rewards to selected
+                participants.
+              </p>
+
+            </div>
+
+
+            <div class="radio-circle"></div>
+
+          </button>
+
+
+          <button
+            class="mode-card"
+            data-mode="ranked-winners"
+          >
+
+            <div class="mode-card-icon">
+              🏆
+            </div>
+
+
+            <div class="mode-card-content">
+
+              <h3>
+                Ranked Winners
+              </h3>
+
+              <p>
+                Pick winners for 1st, 2nd, 3rd place and custom positions.
+              </p>
+
+            </div>
+
+
+            <div class="radio-circle"></div>
+
+          </button>
+
+
+          <button
+            class="mode-card"
+            data-mode="winner-nothing"
+          >
+
+            <div class="mode-card-icon">
+              🎲
+            </div>
+
+
+            <div class="mode-card-content">
+
+              <h3>
+                Winner or Nothing
+              </h3>
+
+              <p>
+                Select winners while everyone else receives nothing.
+              </p>
+
+            </div>
+
+
+            <div class="radio-circle"></div>
+
+          </button>
+
+
+          <button
+            class="mode-card"
+            data-mode="multiple-gifts"
+          >
+
+            <div class="mode-card-icon">
+              🎉
+            </div>
+
+
+            <div class="mode-card-content">
+
+              <h3>
+                Multiple Gifts
+              </h3>
+
+              <p>
+                Distribute multiple custom rewards according to their
+                quantities.
+              </p>
+
+            </div>
+
+
+            <div class="radio-circle"></div>
+
+          </button>
+
+        </div>
+
+
+        <!-- Mode Settings -->
+        <div class="section-card mode-settings">
+
+          <div class="section-heading">
+
+            <div>
+
+              <h3>
+                Mode Settings
+              </h3>
+
+              <p>
+                Configure your selected giveaway mode.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="setting-row">
+
+            <div>
+
+              <strong>
+                Number of Winners
+              </strong>
+
+              <span>
+                How many participants should win?
+              </span>
+
+            </div>
+
+
+            <div class="number-control">
+
+              <button id="decreaseWinners">
+                −
+              </button>
+
+              <input
+                type="number"
+                id="winnerCount"
+                value="1"
+                min="1"
+              >
+
+              <button id="increaseWinners">
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================
+           DRAW
+      ====================== -->
+      <section
+        class="page"
+        id="page-draw"
+      >
+
+        <div class="page-header centered">
+
+          <div>
+
+            <span class="eyebrow">
+              THE MOMENT
+            </span>
+
+            <h2>
+              Let's Pick a Winner
+            </h2>
+
+            <p>
+              Hold your breath... someone is about to win!
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- Spinner -->
+        <div class="spinner-wrapper">
+
+          <div class="spinner-container">
+
+            <div class="spinner-top-glow"></div>
+
+            <div class="selection-line top"></div>
+
+            <div class="selection-line bottom"></div>
+
+
+            <div
+              class="spinner-track"
+              id="spinnerTrack"
+            ></div>
+
+
+            <div class="spinner-center-glow"></div>
+
+          </div>
+
+
+          <div
+            class="spinner-status"
+            id="spinnerStatus"
+          >
+            Ready to spin
+          </div>
+
+        </div>
+
+
+        <div class="draw-controls">
+
+          <button
+            class="spin-button"
+            id="spinButton"
+          >
+
+            <span class="spin-icon">
+              ⚡
+            </span>
+
+            <span>
+              SPIN
+            </span>
+
+          </button>
+
+        </div>
+
+
+        <div class="draw-info">
+
+          <div class="draw-stat">
+
+            <span>
+              Participants
+            </span>
+
+            <strong id="drawParticipantCount">
+              0
+            </strong>
+
+          </div>
+
+
+          <div class="draw-stat">
+
+            <span>
+              Winner
+            </span>
+
+            <strong id="drawWinnerProgress">
+              0 / 0
+            </strong>
+
+          </div>
+
+
+          <div class="draw-stat">
+
+            <span>
+              Rewards
+            </span>
+
+            <strong id="drawRewardCount">
+              0
+            </strong>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================
+           RESULTS
+      ====================== -->
+      <section
+        class="page"
+        id="page-results"
+      >
+
+        <div class="page-header">
+
+          <div>
+
+            <span class="eyebrow">
+              GIVEAWAY COMPLETE
+            </span>
+
+            <h2>
+              🎉 Results
+            </h2>
+
+            <p>
+              Your winners have been selected.
+            </p>
+
+          </div>
+
+
+          <div class="header-actions">
+
+            <button
+              class="secondary-button"
+              id="copyResults"
+            >
+              📋 Copy
+            </button>
+
+
+            <button
+              class="secondary-button"
+              id="downloadResults"
+            >
+              ⬇ Download
+            </button>
+
+
+            <button
+              class="primary-button"
+              id="shareResults"
+            >
+              ↗ Share
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="results-card">
+
+          <div class="results-header">
+
+            <div class="results-brand">
+              🎁 EGIVEAWAYS
+            </div>
+
+
+            <div
+              class="results-date"
+              id="resultsDate"
+            ></div>
+
+          </div>
+
+
+          <div class="results-title">
+
+            <h3 id="resultsGiveawayName">
+              My Giveaway
+            </h3>
+
+            <span id="resultsMode">
+              Random Winner
+            </span>
+
+          </div>
+
+
+          <div
+            class="winner-list"
+            id="winnerList"
+          ></div>
+
+
+          <div class="results-footer">
+
+            <span>
+              Pick. Spin. Win. 🎁
+            </span>
+
+            <strong>
+              EGiveaways
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="results-actions">
+
+          <button
+            class="secondary-button"
+            id="newGiveaway"
+          >
+            + New Giveaway
+          </button>
+
+
+          <button
+            class="ghost-button"
+            id="restartGiveaway"
+          >
+            🔄 Restart
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================
+           HISTORY
+      ====================== -->
+      <section
+        class="page"
+        id="page-history"
+      >
+
+        <div class="page-header">
+
+          <div>
+
+            <span class="eyebrow">
+              YOUR GIVEAWAYS
+            </span>
+
+            <h2>
+              History
+            </h2>
+
+            <p>
+              View your previous giveaway results.
+            </p>
+
+          </div>
+
+
+          <button
+            class="danger-button"
+            id="clearHistory"
+          >
+            Clear History
+          </button>
+
+        </div>
+
+
+        <div
+          class="history-list"
+          id="historyList"
+        ></div>
+
+
+        <div
+          class="empty-state large"
+          id="historyEmptyState"
+        >
+
+          <div class="empty-icon">
+            🕘
+          </div>
+
+          <h4>
+            No giveaway history
+          </h4>
+
+          <p>
+            Completed giveaways will appear here.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================
+           SETTINGS
+      ====================== -->
+      <section
+        class="page"
+        id="page-settings"
+      >
+
+        <div class="page-header">
+
+          <div>
+
+            <span class="eyebrow">
+              CUSTOMIZE
+            </span>
+
+            <h2>
+              Settings
+            </h2>
+
+            <p>
+              Control how EGiveaways behaves.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="settings-card">
+
+          <div class="settings-group">
+
+            <h3>
+              Spin Animation
+            </h3>
+
+
+            <div class="setting-row">
+
+              <div>
+
+                <strong>
+                  Spin Speed
+                </strong>
+
+                <span>
+                  How quickly names move during the spin.
+                </span>
+
+              </div>
+
+
+              <select id="spinSpeed">
+
+                <option value="slow">
+                  Slow
+                </option>
+
+                <option
+                  value="normal"
+                  selected
+                >
+                  Normal
+                </option>
+
+                <option value="fast">
+                  Fast
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="setting-row">
+
+              <div>
+
+                <strong>
+                  Animation Duration
+                </strong>
+
+                <span>
+                  How long each spin should last.
+                </span>
+
+              </div>
+
+
+              <select id="animationDuration">
+
+                <option value="short">
+                  Short
+                </option>
+
+                <option
+                  value="normal"
+                  selected
+                >
+                  Normal
+                </option>
+
+                <option value="long">
+                  Long
+                </option>
+
+              </select>
+
+            </div>
+
+          </div>
+
+
+          <div class="settings-group">
+
+            <h3>
+              Effects
+            </h3>
+
+
+            <label class="toggle-row">
+
+              <div>
+
+                <strong>
+                  Spin Sound
+                </strong>
+
+                <span>
+                  Play sound while spinning.
+                </span>
+
+              </div>
+
+
+              <input
+                type="checkbox"
+                id="soundEnabled"
+                checked
+              >
+
+              <span class="toggle"></span>
+
+            </label>
+
+
+            <label class="toggle-row">
+
+              <div>
+
+                <strong>
+                  Confetti
+                </strong>
+
+                <span>
+                  Celebrate winners with confetti.
+                </span>
+
+              </div>
+
+
+              <input
+                type="checkbox"
+                id="confettiEnabled"
+                checked
+              >
+
+              <span class="toggle"></span>
+
+            </label>
+
+          </div>
+
+
+          <div class="settings-group">
+
+            <h3>
+              Winner Rules
+            </h3>
+
+
+            <label class="toggle-row">
+
+              <div>
+
+                <strong>
+                  Prevent Repeat Winners
+                </strong>
+
+                <span>
+                  A winner cannot be selected again.
+                </span>
+
+              </div>
+
+
+              <input
+                type="checkbox"
+                id="preventRepeat"
+                checked
+              >
+
+              <span class="toggle"></span>
+
+            </label>
+
+
+            <label class="toggle-row">
+
+              <div>
+
+                <strong>
+                  Automatically Remove Winners
+                </strong>
+
+                <span>
+                  Remove winners from the participant pool.
+                </span>
+
+              </div>
+
+
+              <input
+                type="checkbox"
+                id="autoRemoveWinners"
+                checked
+              >
+
+              <span class="toggle"></span>
+
+            </label>
+
+          </div>
+
+
+          <div class="settings-group">
+
+            <h3>
+              Data
+            </h3>
+
+
+            <div class="setting-row">
+
+              <div>
+
+                <strong>
+                  Duplicate Names
+                </strong>
+
+                <span>
+                  Choose how duplicate participant names are handled.
+                </span>
+
+              </div>
+
+
+              <select id="duplicateHandling">
+
+                <option
+                  value="remove"
+                  selected
+                >
+                  Remove duplicates
+                </option>
+
+                <option value="keep">
+                  Keep duplicates
+                </option>
+
+              </select>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- =========================
+       OVERLAY
+  ========================== -->
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- =====================================================
+       NEW: CREATE ENTRY FORM MODAL
+  ====================================================== -->
+  <div
+    class="modal-backdrop"
+    id="entryFormModal"
+    aria-hidden="true"
+  >
+
+    <div class="modal">
+
+      <div class="modal-header">
+
+        <div>
+
+          <span class="eyebrow">
+            PUBLIC ENTRY
+          </span>
+
+          <h3>
+            Create Entry Form
+          </h3>
+
+        </div>
+
+
+        <button
+          class="icon-button"
+          data-close-modal="entryFormModal"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <form id="entryForm">
+
+        <!-- Giveaway Name -->
+        <label class="form-label">
+
+          Giveaway Name
+
+          <input
+            type="text"
+            id="entryGiveawayName"
+            placeholder="e.g. iPhone Giveaway"
+            maxlength="80"
+            required
+          >
+
+        </label>
+
+
+        <!-- Entry Type -->
+        <div class="form-label">
+
+          <span>
+            Entry Type
+          </span>
+
+
+          <div class="entry-type-options">
+
+            <label class="entry-type-option">
+
+              <input
+                type="radio"
+                name="entryType"
+                value="name"
+                checked
+              >
+
+              <span class="entry-type-option-content">
+
+                <span class="entry-type-icon">
+                  👤
+                </span>
+
+                <span>
+
+                  <strong>
+                    Name
+                  </strong>
+
+                  <small>
+                    People enter their name
+                  </small>
+
+                </span>
+
+              </span>
+
+            </label>
+
+
+            <label class="entry-type-option">
+
+              <input
+                type="radio"
+                name="entryType"
+                value="number"
+              >
+
+              <span class="entry-type-option-content">
+
+                <span class="entry-type-icon">
+                  🔢
+                </span>
+
+                <span>
+
+                  <strong>
+                    Number
+                  </strong>
+
+                  <small>
+                    People enter a number
+                  </small>
+
+                </span>
+
+              </span>
+
+            </label>
+
+          </div>
+
+        </div>
+
+
+        <!-- Start -->
+        <div class="form-two-columns">
+
+          <label class="form-label">
+
+            Opening Date
+
+            <input
+              type="date"
+              id="entryStartDate"
+              required
+            >
+
+          </label>
+
+
+          <label class="form-label">
+
+            Opening Time
+
+            <input
+              type="time"
+              id="entryStartTime"
+              required
+            >
+
+          </label>
+
+        </div>
+
+
+        <!-- End -->
+        <div class="form-two-columns">
+
+          <label class="form-label">
+
+            Closing Date
+
+            <input
+              type="date"
+              id="entryEndDate"
+              required
+            >
+
+          </label>
+
+
+          <label class="form-label">
+
+            Closing Time
+
+            <input
+              type="time"
+              id="entryEndTime"
+              required
+            >
+
+          </label>
+
+        </div>
+
+
+        <!-- Timezone -->
+        <div class="entry-timezone-info">
+
+          <span>
+            🌍
+          </span>
+
+          <div>
+
+            <strong>
+              Your local time
+            </strong>
+
+            <small>
+              Entry times will follow your device's local timezone.
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="ghost-button"
+            data-close-modal="entryFormModal"
+          >
+            Cancel
+          </button>
+
+
+          <button
+            type="submit"
+            class="primary-button"
+          >
+            Create Entry Form
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       NEW: VIEW ENTRIES MODAL
+  ====================================================== -->
+  <div
+    class="modal-backdrop"
+    id="viewEntriesModal"
+    aria-hidden="true"
+  >
+
+    <div class="modal modal-wide">
+
+      <div class="modal-header">
+
+        <div>
+
+          <span class="eyebrow">
+            SUBMISSIONS
+          </span>
+
+          <h3 id="viewEntriesTitle">
+            Giveaway Entries
+          </h3>
+
+        </div>
+
+
+        <button
+          class="icon-button"
+          data-close-modal="viewEntriesModal"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div class="entry-modal-toolbar">
+
+        <div>
+
+          <strong id="viewEntriesCount">
+            0 Entries
+          </strong>
+
+          <span>
+            Submitted entries
+          </span>
+
+        </div>
+
+
+        <button
+          class="primary-button"
+          id="useEntriesButton"
+        >
+          🎟️ Use These Entries
+        </button>
+
+      </div>
+
+
+      <div
+        class="submitted-entries-list"
+        id="submittedEntriesList"
+      ></div>
+
+
+      <div
+        class="empty-state"
+        id="submittedEntriesEmptyState"
+      >
+
+        <div class="empty-icon">
+          🎟️
+        </div>
+
+        <h4>
+          No entries yet
+        </h4>
+
+        <p>
+          Submitted entries will appear here.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       REWARD MODAL
+  ========================== -->
+  <div
+    class="modal-backdrop"
+    id="rewardModal"
+    aria-hidden="true"
+  >
+
+    <div class="modal">
+
+      <div class="modal-header">
+
+        <div>
+
+          <span class="eyebrow">
+            REWARD
+          </span>
+
+          <h3 id="rewardModalTitle">
+            Add Reward
+          </h3>
+
+        </div>
+
+
+        <button
+          class="icon-button"
+          data-close-modal="rewardModal"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <form id="rewardForm">
+
+        <input
+          type="hidden"
+          id="editingRewardId"
+        >
+
+
+        <label class="form-label">
+
+          Reward Name
+
+          <input
+            type="text"
+            id="rewardName"
+            placeholder="e.g. 1GB Data"
+            maxlength="60"
+            required
+          >
+
+        </label>
+
+
+        <label class="form-label">
+
+          Emoji / Icon
+
+          <input
+            type="text"
+            id="rewardEmoji"
+            placeholder="🎁"
+            maxlength="4"
+          >
+
+        </label>
+
+
+        <label class="form-label">
+
+          Quantity
+
+          <input
+            type="number"
+            id="rewardQuantity"
+            value="1"
+            min="1"
+            required
+          >
+
+          <small>
+            How many participants can receive this reward?
+          </small>
+
+        </label>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="ghost-button"
+            data-close-modal="rewardModal"
+          >
+            Cancel
+          </button>
+
+
+          <button
+            type="submit"
+            class="primary-button"
+          >
+            Save Reward
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       WINNER REVEAL
+  ========================== -->
+  <div
+    class="winner-overlay"
+    id="winnerOverlay"
+    aria-hidden="true"
+  >
+
+    <div class="winner-reveal">
+
+      <div
+        class="winner-confetti"
+        id="confettiContainer"
+      ></div>
+
+
+      <div class="winner-trophy">
+        🏆
+      </div>
+
+
+      <span class="winner-label">
+        🎉 WINNER!
+      </span>
+
+
+      <h2 id="revealedWinner">
+        Akosua
+      </h2>
+
+
+      <div
+        class="revealed-reward"
+        id="revealedReward"
+      >
+        🎁 1GB Data
+      </div>
+
+
+      <div class="winner-reveal-actions">
+
+        <button
+          class="secondary-button"
+          id="pickAnother"
+        >
+          Pick Another
+        </button>
+
+
+        <button
+          class="primary-button"
+          id="continueAfterWinner"
+        >
+          Continue
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       TOAST
+  ========================== -->
+  <div
+    class="toast-container"
+    id="toastContainer"
+  ></div>
+
+
+  <!-- =========================
+       SCRIPT
+  ========================= -->
+  <script src="js/app.js"></script>
+
+</body>
+</html>
