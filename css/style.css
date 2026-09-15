@@ -2006,6 +2006,30 @@ select:focus {
 }
 
 /* =========================================================
+   EMPTY STATES — HIDE / SHOW
+   Empty states are hidden by default.
+   JavaScript adds the "visible" class when they should show.
+   Only the states listed below are hidden; empty states that
+   do not have a corresponding JS toggle are left visible.
+========================================================= */
+
+#entryFormsEmptyState,
+#submittedEntriesEmptyState,
+#participantEmptyState,
+#rewardEmptyState,
+#historyEmptyState {
+  display: none;
+}
+
+#entryFormsEmptyState.visible,
+#submittedEntriesEmptyState.visible,
+#participantEmptyState.visible,
+#rewardEmptyState.visible,
+#historyEmptyState.visible {
+  display: block;
+}
+
+/* =========================================================
    MODES
 ========================================================= */
 
